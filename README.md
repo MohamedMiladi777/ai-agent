@@ -20,3 +20,8 @@ Create an [API Key from OpenAI](https://platform.openai.com/settings/organizatio
 ```
 OPENAI_API_KEY='YOUR_API_KEY'
 ```
+
+**NB: Some DOLLAS were lost in this project.
+
+“If you wish to get rich, save what you get. A fool can earn money; but it takes a wise man to save and dispose of it to his own advantage.” - Einstein probably
+**
