@@ -12,12 +12,19 @@ if (!userMessage) {
 //console.log(process)
 console.log(process.argv[2])
 
+// Save the user messages
+await addMessage([{role:"user", content: userMessage}])
+
 //We fetch for the entire history of messages
 const messages = await getMessages()
 
 // On first run, the LLM will respond correctly but on consecutive runs it
 // will not interact with previous prompts since it has dementia..
 
+const response = await runLLM({
+  messages,
+})
 
-const response = await runLLM({ messages: [...messages, {role: "user", content: userMessage}] })
+//Save the AI response
+await addMessage([{role: "assistant", content: userMessage}])
 console.log(response)
