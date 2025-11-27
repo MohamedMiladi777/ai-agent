@@ -23,6 +23,8 @@ const messages = await getMessages()
 
 const response = await runLLM({
   messages,
+  tools: [],
+
 })
 
 //Save the AI response

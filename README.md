@@ -8,9 +8,9 @@ This repo requires **Node.js version 20+** or **bun v1.0.20**.
 To run the project:
 
 ```bash
-npm start
+npm start "Query in a string format"
 # or
-bun run index.ts
+bun run index.ts "Query in a string format"
 ```
 
 ## OpenAI API Key
