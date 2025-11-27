@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import { runLLM } from './src/llm'
-import { addMessage, getMessages } from './src/memory'
+import { runAgent } from './src/agent'
+import { z } from 'zod'
 
 const userMessage = process.argv[2]
 
@@ -9,24 +9,15 @@ if (!userMessage) {
   process.exit(1)
 }
 
+const weather_tool = {
+  name: 'get_weather',
+  parameters: z.object({})
+}
+
+const response = await runAgent({userMessage, tools: []})
+console.log(response)
+
 //console.log(process)
 console.log(process.argv[2])
 
-// Save the user messages
-await addMessage([{role:"user", content: userMessage}])
 
-//We fetch for the entire history of messages
-const messages = await getMessages()
-
-// On first run, the LLM will respond correctly but on consecutive runs it
-// will not interact with previous prompts since it has dementia..
-
-const response = await runLLM({
-  messages,
-  tools: [],
-
-})
-
-//Save the AI response
-await addMessage([{role: "assistant", content: userMessage}])
-console.log(response)

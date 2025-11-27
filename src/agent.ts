@@ -3,15 +3,15 @@ import { runLLM } from './llm'
 import { addMessage, getMessages } from './memory'
 import { logMessage, showLoader } from './ui'
 //Created a runAgent function that takes a userMessage(Through destructuring)
-const runAgent = async ({
-  userMessages,
+export const runAgent = async ({
+  userMessage,
   tools,
 }: {
-  userMessages: AIMessage[]
+  userMessage: string
   tools: any[]
 }) => {
   //Added the userMessage to the lowdb
-  await addMessage(userMessages)
+  await addMessage([{ role: 'user', content: userMessage }])
 
   //Improrted showLoader from UI to display the thinking phase
   const loader = showLoader('Thinking...')
@@ -24,7 +24,7 @@ const runAgent = async ({
   //(also pass the tools in runLLM and index.ts and runAgent)
 
   //Add the response of the LLM
-  await addMessage([{ role: 'assistant', content: response }])
+  await addMessage([response])
   // Log the message
   logMessage(response)
 
