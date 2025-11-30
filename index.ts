@@ -14,8 +14,7 @@ const weather_tool = {
   parameters: z.object({})
 }
 
-const response = await runAgent({userMessage, tools: []})
-console.log(response)
+await runAgent({userMessage, tools: []})
 
 //console.log(process)
 console.log(process.argv[2])

@@ -7,7 +7,7 @@ import { zodFunction } from 'openai/helpers/zod.mjs'
 // Destructure the userMessage
 export const runLLM = async ({ messages, tools }: { messages: AIMessage[], tools: any[] }) => {
   
-  //Format all the tools and convert them into zod functions
+  // Format all the tools and convert them into zod functions
   const formattedTools = tools.map(zodFunction)
   //the create function has multiple properties like top-p,n (number of chat completions) and so onx²
   const response = await openai.chat.completions.create({

@@ -55,3 +55,13 @@ export const getMessages = async () => {
     return db.data.messages.map(removeMetaData)
 }
 
+
+/** Make a save tool response function which takes
+ * @param {ToolCallId}: string
+ * @param {toolResponse} : string
+ * 
+ * @returns {role}: tool
+ * @returns {content}: toolResponse
+ * @returns {tool_call_id} : toolCallId
+ */
+
